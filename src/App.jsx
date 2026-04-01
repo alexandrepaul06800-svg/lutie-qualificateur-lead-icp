@@ -323,16 +323,6 @@ export default function App() {
           </div>
         )}
 
-        {/* CTA always visible at bottom (if not in result view) */}
-        {!result && (
-          <div className="card cta-block">
-            <p className="cta-text">Tu veux qu'on qualifie tes leads pour toi ?</p>
-            <LottieButton href="https://lutie.webflow.io/contact">
-              En savoir plus
-            </LottieButton>
-          </div>
-        )}
-
         {/* Footer */}
         <footer className="tool-footer">
           Outil gratuit par <a href="https://lutie.webflow.io" target="_blank" rel="noopener noreferrer">Lutie</a> — Agence Google Ads &amp; Meta Ads
