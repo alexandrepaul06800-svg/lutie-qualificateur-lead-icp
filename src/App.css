@@ -84,10 +84,44 @@
   border-top: 1px solid var(--color-border);
 }
 
+.icp-desc-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
 .icp-desc {
   font-size: 13px;
   color: var(--color-text-secondary);
   margin: 16px 0 20px;
+}
+
+.btn-example {
+  flex-shrink: 0;
+  background: var(--color-primary-bg);
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background 0.15s;
+  margin-top: 16px;
+}
+
+.btn-example:hover {
+  background: rgba(252, 184, 0, 0.2);
+}
+
+.loading-hint {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  text-align: center;
+  margin-top: var(--space-sm);
 }
 
 .icp-saved-hint {

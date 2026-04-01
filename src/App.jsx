@@ -22,6 +22,16 @@ const DEFAULT_ICP = {
   probleme: "",
 }
 
+const EXAMPLE_ICP = {
+  secteurs: "E-commerce mode, beauté, maison, sport",
+  taille: "5-100 salariés, PME e-commerce",
+  geo: "France, Belgique, Suisse",
+  ca: "500k€ - 10M€",
+  signaux_positifs: "Site e-commerce actif, dépenses Google Ads ou Meta Ads visibles, avis clients récents",
+  signaux_exclusion: "Dropshipping pur, marketplace uniquement (Amazon), B2B industriel",
+  probleme: "ROAS insuffisant, CPA trop élevé, tracking Google Ads défaillant",
+}
+
 function LottieButton({ href, children, className = "" }) {
   const [animData, setAnimData] = useState(null)
   const lottieRef = useRef(null)
@@ -225,7 +235,17 @@ export default function App() {
 
           {showIcpConfig && (
             <div className="icp-fields">
-              <p className="icp-desc">Configure ton ICP une fois — il sera sauvegardé pour toutes tes analyses.</p>
+              <div className="icp-desc-row">
+                <p className="icp-desc">Configure ton ICP une fois — il sera sauvegardé pour toutes tes analyses.</p>
+                {Object.values(icpConfig).every(v => !v) && (
+                  <button
+                    className="btn-example"
+                    onClick={() => setIcpConfig(EXAMPLE_ICP)}
+                  >
+                    Utiliser l'exemple Lutie
+                  </button>
+                )}
+              </div>
               <div className="grid-2">
                 {ICP_FIELDS.map(field => (
                   <div key={field.key} className="input-group">
@@ -276,12 +296,15 @@ export default function App() {
                 {loading ? (
                   <>
                     <span className="spinner" />
-                    Analyse en cours…
+                    Analyse en cours… (~30s)
                   </>
                 ) : (
                   "Analyser ce prospect"
                 )}
               </button>
+              {loading && (
+                <p className="loading-hint">L'IA lit le site et le compare à ton ICP. ~30 secondes.</p>
+              )}
             </div>
           </div>
         ) : (
